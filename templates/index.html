@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}" />
+    <title>NOTES APP</title>
+</head>
+<body>
+    <h1>My Notes</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="note" placeholder="Write a note..." required>
+        <button type="submit">Add Note</button>
+    </form>
+
+    <h2>All Notes:</h2>
+
+    <ul>
+        {% for note in notes %}
+        <li>
+            {{ note.text }}
+            <small> -Added on {{ note.date.strftime("%Y-%m-%d") }}</small>
+            <a href="/edit/{{ note.id }}">Edit</a>  
+
+            <form action="/delete/{{ note.id }}" method="POST" style="display:inline;"> 
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

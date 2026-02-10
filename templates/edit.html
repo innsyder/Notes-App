@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css' ) }}" />
+    <title>EDIT NOTE</title>
+</head>
+<body>
+    <h1>EDIT NOTE</h1>
+
+    <form action="/update/{{ note.id }}" method="POST">
+        <input type="text" name="new_text" value="{{ note.text }}" required>
+        <button>Save</button>
+    </form>
+
+    <br>
+    <a href="/">Cancel</a>
+
+</body>
+</html>
